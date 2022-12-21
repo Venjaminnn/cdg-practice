@@ -1,7 +1,4 @@
-CURRENT_BALANCE = 'balance.txt'
-
 START_BALANCE = 100.0.freeze
-
 
 loop do
   puts "What operation you want to do?"
@@ -18,12 +15,12 @@ loop do
  when 'D'
    puts "Enter an amount greater than 0."
    amount = gets.chomp.to_f
-   buffer_amount = File.exist?(CURRENT_BALANCE) ? File.open(CURRENT_BALANCE, "r").readlines[0].to_f : START_BALANCE
+   buffer_amount = File.exist?('actors.txt') ? File.open('actors.txt', "r").readlines[0].to_f : START_BALANCE
      if amount <= 0
        puts "Enter an amount greater than 0."
      else
        result_amount = amount + buffer_amount
-       account = File.open(CURRENT_BALANCE, "w+")
+       account = File.open('actors.txt', "w+")
        account.write(result_amount)
        puts "Your current balance is #{result_amount} USD."
        account.close
@@ -31,20 +28,20 @@ loop do
   when 'W'
    puts "How much do you want to withdrawl?"
    amount = gets.chomp.to_f
-   account_amount = File.exist?(CURRENT_BALANCE) ? File.open(CURRENT_BALANCE, "r").readlines[0].to_f : START_BALANCE
+   account_amount = File.exist?('actors.txt') ? File.open('actors.txt', "r").readlines[0].to_f : START_BALANCE
      if amount > account_amount
        puts "There is not enough money on your balance."
      elsif amount <= 0
        puts "Enter an amount greater than 0 or equal to your balance."
      else
        result_amount = account_amount - amount
-       account = File.open(CURRENT_BALANCE, "w+")
+       account = File.open('actors.txt', "w+")
        account.write(result_amount.round(2))
        puts "Your current balance is #{result_amount} USD."
        account.close
      end
   when 'B'
-    amount = File.exist?(CURRENT_BALANCE) ? File.open(CURRENT_BALANCE, "r").readlines[0] : START_BALANCE
+    amount = File.exist?('actors.txt') ? File.open('actors.txt', "r").readlines[0] : START_BALANCE
     puts "Your balance is #{amount} USD."
   when 'Q'
     break

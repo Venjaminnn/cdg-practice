@@ -1,12 +1,10 @@
-ACTORS_LIST = 'actors.txt'
-
-def where(pattern: 'Tom')
-  @actor_name = []
-  File.foreach(ACTORS_LIST) do |actor|
-    @actor_name << actor.chomp if actor.include?(pattern)
+def where(pattern = 'value')
+  actor_name = []
+  File.foreach('actors.txt') do |actor|
+    actor_name << actor.chomp if actor.include?(pattern)
   end
   
-  pp @actor_name
+  puts actor_name
 end
 
 where

@@ -1,8 +1,5 @@
-require 'fileutils'
-ACTORS_LIST = 'actors.txt'
-
-def create(name: 'Woody Harrelson')
-  file = File.open(ACTORS_LIST, "a")
+def create(name = 'value')
+  file = File.open('actors.txt', "a")
   file.puts(name)
   file.close
 end

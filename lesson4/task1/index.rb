@@ -1,8 +1,5 @@
-ACTORS_LIST = 'actors.txt'
-file = File.open(ACTORS_LIST)
-
 def index
-  File.foreach(ACTORS_LIST) { |actor| pp actor.chomp}
+  File.foreach('actors.txt') { |actor| puts actor.chomp}
 end
 
 index

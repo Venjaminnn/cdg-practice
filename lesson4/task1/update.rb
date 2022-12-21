@@ -1,17 +1,13 @@
-require 'fileutils'
-ACTORS_LIST = 'actors.txt'
-BUFFER = 'buffer.txt'
-
-def update(id: 3, name: 'Keanu Charles Reeves')
-  file = File.open(BUFFER, 'w')
-  File.foreach(ACTORS_LIST).with_index do |actor, index|
+def update(id = 13 , name = 'value')
+  file = File.open('buffer.txt', 'w')
+  File.foreach('actors.txt').with_index do |actor, index|
     file.puts(id == index ? name : actor)
   end
 
   file.close
-  File.write(ACTORS_LIST, File.read(BUFFER))
+  File.write('actors.txt', File.read('buffer.txt'))
   
-  File.delete(BUFFER) if File.exist?(BUFFER)
+  File.delete('buffer.txt') if File.exist?('buffer.txt')
 end
 
 update
